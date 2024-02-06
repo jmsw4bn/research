@@ -3,16 +3,17 @@
 # Disable ufw
 sudo ufw disable
 
-# Install V2Ray
-sudo bash -c 'bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)'
-
 # Install curl (if not already installed)
 sudo apt install -y curl
+
+# Install V2Ray
+sudo bash -c 'bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)'
 
 # Install V2Ray geoip and geosite data
 sudo bash -c 'bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)'
 
 # Update V2Ray config
+sudo touch /usr/local/etc/v2ray/config.json
 sudo tee /usr/local/etc/v2ray/config.json > /dev/null <<EOF
 {
     "inbounds": [
